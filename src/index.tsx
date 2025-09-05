@@ -102,12 +102,11 @@ export function Marquee({
     const { className: innerClassName, ...childrenWrapperRest } = childrenWrapperProps || {};
 
     // State to track when component is fully mounted and ready
-    const [isReady, setIsReady] = useState(false);
-
+    const [actualCopies, setActualCopies] = useState(1);
     // Use layout effect to set ready state before browser paint
     useLayoutEffect(() => {
         const timer = setTimeout(() => {
-            setIsReady(true);
+            setActualCopies(numberOfCopies);
         }, 0); // Use setTimeout to ensure this runs after the initial render
 
         return () => clearTimeout(timer);
@@ -116,7 +115,6 @@ export function Marquee({
     const isHorizontal = direction === "left" || direction === "right";
 
     // Use only 1 copy until component is ready, then use the specified numberOfCopies
-    const actualCopies = isReady ? numberOfCopies : 1;
 
     return (
         <div
