@@ -1,3 +1,22 @@
-@tailwind base;
-@tailwind components;
+/* @tailwind base;
+@tailwind components; */
 @tailwind utilities;
+
+/* Custom animation-play-state utilities for pause on hover */
+@layer utilities {
+  .dxkit-marquee-animation-paused {
+    animation-play-state: paused;
+  }
+
+  .dxkit-marquee-animation-running {
+    animation-play-state: running;
+  }
+
+  .group:hover .dxkit-marquee-group-hover\:dxkit-marquee-animation-paused {
+    animation-play-state: paused;
+  }
+
+  .dxkit-marquee-direction-reverse {
+    animation-direction: reverse;
+  }
+}

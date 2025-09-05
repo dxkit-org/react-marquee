@@ -26,6 +26,5 @@ module.exports = {
         },
     },
     plugins: [
-        // Removed tailwindcss-animate to avoid extra keyframes
     ],
 }
