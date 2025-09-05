@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode, useLayoutEffect, useState } from "react";
 import "./global.css";
 import { cn } from "./lib/utils";
 
@@ -101,7 +101,22 @@ export function Marquee({
     const { className, ...rest } = containerProps || {};
     const { className: innerClassName, ...childrenWrapperRest } = childrenWrapperProps || {};
 
+    // State to track when component is fully mounted and ready
+    const [isReady, setIsReady] = useState(false);
+
+    // Use layout effect to set ready state before browser paint
+    useLayoutEffect(() => {
+        const timer = setTimeout(() => {
+            setIsReady(true);
+        }, 0); // Use setTimeout to ensure this runs after the initial render
+
+        return () => clearTimeout(timer);
+    }, []);
+
     const isHorizontal = direction === "left" || direction === "right";
+
+    // Use only 1 copy until component is ready, then use the specified numberOfCopies
+    const actualCopies = isReady ? numberOfCopies : 1;
 
     return (
         <div
@@ -122,7 +137,7 @@ export function Marquee({
             }}
             {...rest}
         >
-            {Array(numberOfCopies)
+            {Array(actualCopies)
                 .fill(0)
                 .map((_, i) => (
                     <div
