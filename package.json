@@ -1,6 +1,6 @@
 {
   "name": "@dxkit-org/react-marquee",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A modern, lightweight React marquee component with TypeScript support. Features customizable animations, fade effects, direction control, and accessibility-friendly scrolling text.",
   "keywords": [
     "react",
@@ -72,5 +72,8 @@
   "dependencies": {
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
