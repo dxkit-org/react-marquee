@@ -2,7 +2,6 @@ import { HTMLAttributes, ReactNode } from "react";
 import "./global.css";
 import { cn } from "./lib/utils";
 
-
 export type MarqueeProps = {
     children: ReactNode;
     direction?: "left" | "up";

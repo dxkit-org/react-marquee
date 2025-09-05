@@ -17,4 +17,14 @@ export default defineConfig({
   format: ["cjs", "esm"],
   // Inject CSS into JS bundles to avoid separate CSS import
   injectStyle: true,
+  // Target modern environments
+  target: "es2020",
+  // External dependencies that shouldn't be bundled
+  external: ["react", "react-dom"],
+  // Splitting for better tree-shaking
+  splitting: false,
+  // Minify the output
+  minify: false,
+  // Bundle for better compatibility
+  bundle: true,
 })
