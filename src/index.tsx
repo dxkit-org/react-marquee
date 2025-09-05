@@ -3,14 +3,15 @@ import "./global.css";
 import { cn } from "./lib/utils";
 
 
-export type MarqueeProps = HTMLAttributes<HTMLDivElement> & {
+export type MarqueeProps = {
     children: ReactNode;
     direction?: "left" | "up";
     pauseOnHover?: boolean;
     reverse?: boolean;
     fade?: boolean;
-    innerClassName?: string;
     numberOfCopies?: number;
+    containerProps?: HTMLAttributes<HTMLDivElement>;
+    childrenWrapperProps?: HTMLAttributes<HTMLDivElement>;
 };
 
 export function Marquee({
@@ -19,11 +20,13 @@ export function Marquee({
     pauseOnHover = false,
     reverse = false,
     fade = false,
-    className,
-    innerClassName,
+
     numberOfCopies = 2,
-    ...rest
+    containerProps,
+    childrenWrapperProps
 }: MarqueeProps) {
+    const { className, ...rest } = containerProps || {};
+    const { className: innerClassName, ...childrenWrapperRest } = childrenWrapperProps || {};
     return (
         <div
             className={cn(
@@ -57,6 +60,7 @@ export function Marquee({
                             reverse && "dxkit-marquee-direction-reverse",
                             innerClassName
                         )}
+                        {...childrenWrapperRest}
                     >
                         {children}
                     </div>
