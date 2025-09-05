@@ -186,4 +186,4 @@ coverage/
 *.tar.gz
 *.rar
 
-./src/generated/
+./src/generated/**

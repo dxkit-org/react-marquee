@@ -2,8 +2,9 @@
 @tailwind components; */
 @tailwind utilities;
 
-/* Custom animation-play-state utilities for pause on hover */
+/* React Marquee - Custom CSS Animations and Utilities */
 @layer utilities {
+  /* Animation control utilities */
   .dxkit-marquee-animation-paused {
     animation-play-state: paused;
   }
@@ -18,5 +19,107 @@
 
   .dxkit-marquee-direction-reverse {
     animation-direction: reverse;
+  }
+
+  /* Marquee animations with improved performance */
+  .dxkit-marquee-animate-marquee-left {
+    animation: marquee-left var(--marquee-duration, 15s) linear infinite;
+  }
+
+  .dxkit-marquee-animate-marquee-up {
+    animation: marquee-up var(--marquee-duration, 15s) linear infinite;
+  }
+
+  /* Layout utilities specific to marquee */
+  .dxkit-marquee-flex {
+    display: flex;
+  }
+
+  .dxkit-marquee-flex-row {
+    flex-direction: row;
+  }
+
+  .dxkit-marquee-flex-col {
+    flex-direction: column;
+  }
+
+  .dxkit-marquee-gap-\[1rem\] {
+    gap: 1rem;
+  }
+
+  .dxkit-marquee-overflow-hidden {
+    overflow: hidden;
+  }
+
+  .dxkit-marquee-justify-around {
+    justify-content: space-around;
+  }
+
+  .dxkit-marquee-shrink-0 {
+    flex-shrink: 0;
+  }
+}
+
+/* Keyframe animations optimized for performance */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Performance optimizations */
+.dxkit-marquee-flex,
+.dxkit-marquee-animate-marquee-left,
+.dxkit-marquee-animate-marquee-up {
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .dxkit-marquee-animate-marquee-left,
+  .dxkit-marquee-animate-marquee-up {
+    animation-duration: 30s; /* Slower animation for users who prefer reduced motion */
+  }
+}
+
+/* High-performance GPU acceleration */
+@supports (transform: translate3d(0, 0, 0)) {
+  .dxkit-marquee-animate-marquee-left {
+    animation-name: marquee-left-3d;
+  }
+
+  .dxkit-marquee-animate-marquee-up {
+    animation-name: marquee-up-3d;
+  }
+}
+
+@keyframes marquee-left-3d {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes marquee-up-3d {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+  100% {
+    transform: translate3d(0, -100%, 0);
   }
 }

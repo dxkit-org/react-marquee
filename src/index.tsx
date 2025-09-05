@@ -2,16 +2,78 @@ import { HTMLAttributes, ReactNode } from "react";
 import "./global.css";
 import { cn } from "./lib/utils";
 
+/**
+ * Props for the Marquee component
+ * 
+ * @public
+ */
 export type MarqueeProps = {
+    /** Content to display in the marquee animation */
     children: ReactNode;
+    /** Direction of the marquee animation - horizontal left or vertical up */
     direction?: "left" | "up";
+    /** Whether to pause the animation when user hovers over the component */
     pauseOnHover?: boolean;
+    /** Whether to reverse the animation direction */
     reverse?: boolean;
+    /** Whether to apply a fade effect at the edges of the marquee */
     fade?: boolean;
+    /** Number of copies of the content to create for seamless looping */
     numberOfCopies?: number;
+    /** Additional props to pass to the outer container div */
     containerProps?: HTMLAttributes<HTMLDivElement>;
+    /** Additional props to pass to the content wrapper div */
     childrenWrapperProps?: HTMLAttributes<HTMLDivElement>;
 };
+
+/**
+ * A modern, lightweight React marquee component with full TypeScript support.
+ * 
+ * Perfect for creating smooth scrolling animations, news tickers, logo carousels,
+ * and any other horizontal or vertical scrolling content in your React applications.
+ * 
+ * Features:
+ * - Bi-directional scrolling (horizontal and vertical)
+ * - Fade effects with gradient masks
+ * - Pause on hover functionality
+ * - Reverse animation direction
+ * - Configurable content repetition
+ * - Full accessibility support
+ * - Zero external dependencies
+ * - TypeScript first with complete type definitions
+ * 
+ * @example
+ * ```tsx
+ * // Basic horizontal marquee
+ * <Marquee>
+ *   <span>Welcome to our amazing React Marquee component!</span>
+ * </Marquee>
+ * 
+ * // Vertical marquee with fade effect and pause on hover
+ * <Marquee direction="up" fade pauseOnHover>
+ *   <div>Latest news item 1</div>
+ *   <div>Latest news item 2</div>
+ *   <div>Latest news item 3</div>
+ * </Marquee>
+ * 
+ * // Logo carousel with custom styling
+ * <Marquee 
+ *   pauseOnHover 
+ *   numberOfCopies={3}
+ *   containerProps={{ className: "bg-gray-100 p-4" }}
+ * >
+ *   <div className="flex items-center gap-8">
+ *     <img src="/logo1.png" alt="Company 1" />
+ *     <img src="/logo2.png" alt="Company 2" />
+ *   </div>
+ * </Marquee>
+ * ```
+ * 
+ * @param props - Configuration options for the marquee component
+ * @returns A React functional component that renders an animated marquee
+ * 
+ * @public
+ */
 
 export function Marquee({
     children,

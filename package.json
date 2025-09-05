@@ -1,6 +1,34 @@
 {
   "name": "@dxkit-org/react-marquee",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "A modern, lightweight React marquee component with TypeScript support. Features customizable animations, fade effects, direction control, and accessibility-friendly scrolling text.",
+  "keywords": [
+    "react",
+    "marquee",
+    "scroll",
+    "animation",
+    "ticker",
+    "carousel",
+    "typescript",
+    "component",
+    "ui",
+    "tailwind",
+    "css",
+    "modern",
+    "lightweight",
+    "accessibility",
+    "responsive"
+  ],
+  "author": "DXKit Organization",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dxkit-org/react-marquee.git"
+  },
+  "homepage": "https://github.com/dxkit-org/react-marquee#readme",
+  "bugs": {
+    "url": "https://github.com/dxkit-org/react-marquee/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +51,10 @@
     "build:css": "tailwindcss -i ./src/global.css -o ./src/generated/global.css --minify",
     "build:js": "tsup",
     "build": " npm run build:js",
-    "dev": " tsup --watch"
+    "dev": " tsup --watch",
+    "prepublishOnly": "npm run build",
+    "release:patch": "npm version patch",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "peerDependencies": {
     "react": "^18.2.0",
