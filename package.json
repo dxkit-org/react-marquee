@@ -2,26 +2,27 @@
   "name": "@dxkit-org/react-marquee",
   "version": "0.1.0",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i ./src/global.css -o ./dist/styles.css --minify",
-    "build:ts": "tsup src/index.tsx --format cjs,esm --dts",
-    "build": "npm run build:css && npm run build:ts"
+    "build:css": "tailwindcss -i ./src/global.css -o ./src/generated/global.css --minify",
+    "build:js": "tsup",
+    "build": " npm run build:js",
+    "dev": " tsup --watch"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.2.18"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "postcss": "^8.5.6",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.16",
+    "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1",
-    "tailwindcss-animate": "^1.0.7",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },

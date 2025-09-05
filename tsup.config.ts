@@ -13,4 +13,8 @@ export default defineConfig({
   clean: true,
   // Sourcemaps for easier debugging.
   sourcemap: true,
+  // Generate both CJS and ESM formats
+  format: ["cjs", "esm"],
+  // Inject CSS into JS bundles to avoid separate CSS import
+  injectStyle: true,
 })

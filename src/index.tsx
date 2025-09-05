@@ -27,7 +27,7 @@ export function Marquee({
     return (
         <div
             className={cn(
-                "group flex gap-[1rem] overflow-hidden",
+                "dxkit-marquee-group dxkit-marquee-flex dxkit-marquee-gap-[1rem] dxkit-marquee-overflow-hidden",
                 direction === "left" ? "flex-row" : "flex-col",
                 className
             )}
@@ -51,10 +51,10 @@ export function Marquee({
                         className={cn(
                             "flex justify-around gap-[1rem] [--gap:1rem] shrink-0",
                             direction === "left"
-                                ? "animate-marquee-left flex-row"
-                                : "animate-marquee-up flex-col",
-                            pauseOnHover && "group-hover:[animation-play-state:paused]",
-                            reverse && "direction-reverse",
+                                ? "dxkit-marquee-animate-marquee-left flex-row"
+                                : "dxkit-marquee-animate-marquee-up flex-col",
+                            pauseOnHover && "dxkit-marquee-group-hover:[animation-play-state:paused]",
+                            reverse && "dxkit-marquee-direction-reverse",
                             innerClassName
                         )}
                     >

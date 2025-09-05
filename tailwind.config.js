@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./src/**/*.tsx"],
+    // Add unique prefix to avoid conflicts with user's Tailwind classes
+    prefix: "dxkit-marquee-",
+    // Disable base and components to avoid style conflicts for users
+    corePlugins: {
+        preflight: false, // Disable Tailwind's CSS reset
+    },
     theme: {
         extend: {
             keyframes: {
@@ -20,6 +26,6 @@ module.exports = {
         },
     },
     plugins: [
-        require("tailwindcss-animate"),
+        // Removed tailwindcss-animate to avoid extra keyframes
     ],
 }
